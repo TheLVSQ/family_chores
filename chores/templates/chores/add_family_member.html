@@ -1,0 +1,40 @@
+<!-- chores/templates/chores/add_family_member.html -->
+{% extends './base.html' %}
+
+{% block title %}Add Family Member - Family Chores App{% endblock %}
+
+{% block content %}
+    <div style="max-width: 600px; margin: auto;">
+        <h2>Add Family Member</h2>
+        <form method="post" style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label for="id_member_type">Member Type:</label><br>
+                {{ form.member_type }}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="id_first_name">First Name:</label><br>
+                {{ form.first_name }}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="id_last_name">Last Name:</label><br>
+                {{ form.last_name }}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="id_username">Username:</label><br>
+                {{ form.username }}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="id_email">Email Address:</label><br>
+                {{ form.email }}
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label for="id_password">Password:</label><br>
+                {{ form.password }}
+            </div>
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Add Member</button>
+        </form>
+        <br>
+        <a href="{% url 'home' %}" style="text-decoration: none; color: #333;">Back to Home</a>
+    </div>
+{% endblock %}

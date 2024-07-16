@@ -1,0 +1,69 @@
+<!-- chores/templates/chores/family_overview.html -->
+{% extends './base.html' %}
+
+{% load static %}
+
+{% block title %}Family Overview - Family Chores App{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: auto;">
+    <h2>Family Overview</h2>
+    {% if tasks_by_assignee %}
+        {% for assignee, tasks in tasks_by_assignee.items %}
+            <h3>{{ assignee }}</h3>
+            <div class="task-tiles">
+                {% for task in tasks %}
+                    <div class="task-tile">
+                        <h4>{{ task.title }}</h4>
+                        <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+                        <p><strong>Assignee:</strong> {{ task.assignee }}</p>
+                        <p><strong>Priority:</strong> {{ task.priority }}</p>
+                        <!-- Add more details as needed -->
+                        <button class="close-btn">Close</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No tasks due today.</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'login' %}" style="text-decoration: none; color: #333;">Login</a>
+</div>
+
+<style>
+    .task-tiles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .task-tile {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: calc(50% - 10px); /* Adjust based on your layout */
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .task-tile h4 {
+        margin-top: 0;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: #ddd;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}

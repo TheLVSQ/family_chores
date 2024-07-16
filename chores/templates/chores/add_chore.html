@@ -1,0 +1,48 @@
+<!-- chores/templates/chores/add_chore.html -->
+{% extends './base.html' %}
+
+{% block title %}Add Chore - Family Chores App{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto;">
+    <h2>Add Chore</h2>
+    <form method="post" style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+            <label for="id_title">Title:</label><br>
+            {{ form.title }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_frequency">Frequency:</label><br>
+            {{ form.frequency }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_assignee">Assignee:</label><br>
+            {{ form.assignee }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_due_date">Due Date:</label><br>
+            {{ form.due_date }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_priority">Priority:</label><br>
+            {{ form.priority }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_category">Category:</label><br>
+            {{ form.category }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_tags">Tags:</label><br>
+            {{ form.tags }}
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="id_estimated_time">Estimated Time (in minutes):</label><br>
+            {{ form.estimated_time }}
+        </div>
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Add Chore</button>
+    </form>
+    <br>
+    <a href="{% url 'home' %}" style="text-decoration: none; color: #333;">Back to Home</a>
+</div>
+{% endblock %}
